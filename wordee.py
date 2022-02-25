@@ -4,7 +4,6 @@ import random
 import sys
 import os
 
-#https://github.com/dwyl/english-words/
 def getWords(lenght, file) :
     with open(file, "r") as f :
         allWords = f.read().split("\n")
@@ -17,27 +16,43 @@ def getWords(lenght, file) :
     
     return correctWords
 
-def printGuessed(guessed, solution) :
+def printGuessed(guessed, solution, guesses) :
     id = 0
 
     solution = solution.upper()
 
     for guess in guessed :
         id += 1
-        print("%d. " % (id), end="")
+        print("%s. " % (str(id).zfill(len(str(guesses)))), end="") #Adding leading zeros to large numbers. (001, 002, 003)
 
         i = -1
+        removed = 0
+        solutionList = list(solution)
+
+        for letter in guess : #Makes sure a word with a two of the same letter gets marked correctly.
+            i += 1
+
+            letter = letter.upper()
+
+            if letter == solution[i] :
+                solutionList.pop(i - removed)
+                removed += 1
+        
+        i = -1
+
         for letter in guess :
             i += 1
 
             letter = letter.upper()
-            
+
             if letter == solution[i] :
                 textColor = "white"
                 background = "on_green"
-            elif letter in solution :
+            elif letter in solutionList :
                 textColor = "grey"
                 background = "on_yellow"
+                solutionList.pop(i - removed)
+                removed += 1
             else :
                 textColor = "white"
                 background = "on_grey"
@@ -63,6 +78,7 @@ def wordee(worldLenght, guesses, wordsFile="words.txt", cheater=False, forceSolu
         wordlistCheck = True
     else :
         solution = forceSolution.lower().strip()
+        wordlistCheck = True
 
         if not solution in words :
             wordlistCheck = False
@@ -82,7 +98,7 @@ def wordee(worldLenght, guesses, wordsFile="words.txt", cheater=False, forceSolu
     while True :
         os.system("cls")
 
-        printGuessed(guessed, solution)
+        printGuessed(guessed, solution, guesses)
         print(text, end="")
 
         if over :
@@ -144,4 +160,7 @@ if __name__ == "__main__" :
         print("Invalid arguments.")
         sys.exit()
 
-    wordee(lenght, guesses, wordsFile=file, cheater=False, forceSolution=forceSolution)
+    try :
+        wordee(lenght, guesses, wordsFile=file, cheater=False, forceSolution=forceSolution)
+    except KeyboardInterrupt :
+        sys.exit()
