@@ -1,14 +1,12 @@
 # Wordee
 
+A CLI clone of the game [Wordle](https://www.nytimes.com/games/wordle/index.html) written in Python.
 
+‏‏‎ ‎
 
-A CLI clone of the game [Wordle]([Wordle - The New York Times](https://www.nytimes.com/games/wordle/index.html)) written in Python.
+**How to use:**
 
-
-
-**How to install:**
-
-    1. Clone the repository
+    1. [Clone](https://github.com/TriLinder/Wordee/archive/refs/heads/main.zip) the repository
 
     2. Install the required modules from `requirements.txt`
 
@@ -16,7 +14,7 @@ A CLI clone of the game [Wordle]([Wordle - The New York Times](https://www.nytim
 
     4. Run `words.py`
 
-
+‏‏‎ ‎
 
 **Arguments**:
 
@@ -36,22 +34,8 @@ options:
                         Force a solution
 ```
 
-
+‏‏‎ ‎
 
 **Screenshots:**
 
 <img title="" src="screenshots/solution.jpg" alt="solution.jpg" width="404" data-align="inline">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
