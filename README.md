@@ -12,7 +12,7 @@ A CLI clone of the game [Wordle](https://www.nytimes.com/games/wordle/index.html
 
     3. Place a [wordlist](https://github.com/dwyl/english-words/) inside the folder as `words.txt`
 
-    4. Run `words.py`
+    4. Run `wordee.py`
 
 ‏‏‎ ‎
 
