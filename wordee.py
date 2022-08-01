@@ -1,5 +1,6 @@
 from termcolor import colored, cprint
 import argparse
+import platform
 import random
 import sys
 import os
@@ -96,7 +97,10 @@ def wordee(worldLenght, guesses, wordsFile="words.txt", cheater=False, forceSolu
     guessID = 0
     over = False
     while True :
-        os.system("cls")
+        if platform == "Windows" : #Clear the screen
+            os.system("cls")
+        else :
+            os.system("clear")
 
         printGuessed(guessed, solution, guesses)
         print(text, end="")
